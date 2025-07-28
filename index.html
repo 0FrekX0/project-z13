@@ -18,6 +18,25 @@
   text-shadow: 0 0 10px #ff0000;
 }
 
+nav {
+  background-color: #111;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  box-shadow: 0 0 10px #222;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: #ff3333;
+}
+
 .mutant {
   margin-top: 30px;
 }
@@ -62,14 +81,24 @@ footer {
 
   </style>
 </head>
-<body>  <header>PROJECT Z-13</header>  <div class="mutant">
+<body>  <header>PROJECT Z-13</header>  <nav>
+    <a href="#">Головна</a>
+    <a href="#forum">Форум</a>
+    <a href="#login">Вхід</a>
+    <a href="#register">Реєстрація</a>
+  </nav>  <div class="mutant">
     <img src="https://i.imgur.com/Du6tOjv.png" alt="Мутант Кровосос">
-  </div>  <div class="registration">
+  </div>  <div class="registration" id="register">
     <h2>Реєстрація</h2>
     <input type="text" placeholder="Ім'я користувача">
     <input type="email" placeholder="Електронна пошта">
     <input type="password" placeholder="Пароль">
     <button>Зареєструватися</button>
+  </div>  <div class="registration" id="login">
+    <h2>Вхід</h2>
+    <input type="text" placeholder="Ім'я користувача або email">
+    <input type="password" placeholder="Пароль">
+    <button>Увійти</button>
   </div>  <footer>
     Розробник: Kradeel | Компанія: XEON | Email: XEONGRUP
     <br>© 2025 PROJECT Z-13. Усі права захищено.
