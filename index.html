@@ -1,154 +1,107 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PROJECT Z-13 | Реєстрація</title>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>XEON - Реєстрація</title>
   <style>
     body {
-      background-color: #0d0d0d;
-      color: white;
-      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
-      text-align: center;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0d1117;
+      color: #c9d1d9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
     }
-    header {
-      padding: 20px;
-      font-size: 2.5em;
-      background: #111;
-      color: #ff3333;
-      text-shadow: 0 0 10px #ff0000;
+
+    h1 {
+      color: #58a6ff;
     }
-    nav {
-      background: #222;
-      padding: 10px;
-    }
-    nav a {
-      color: white;
-      margin: 0 15px;
-      text-decoration: none;
-    }
+
     .form-box {
-      margin: 30px auto;
-      max-width: 400px;
-      padding: 20px;
-      background: #1a1a1a;
+      background-color: #161b22;
+      padding: 2rem;
       border-radius: 10px;
+      box-shadow: 0 0 10px rgba(100, 100, 100, 0.2);
+      width: 300px;
     }
+
     input {
-      display: block;
-      width: 90%;
-      margin: 10px auto;
+      width: 100%;
       padding: 10px;
+      margin-top: 10px;
       border: none;
       border-radius: 5px;
+      background-color: #0d1117;
+      color: #c9d1d9;
     }
+
     button {
-      padding: 10px 20px;
-      background: #ff3333;
+      width: 100%;
+      padding: 10px;
+      margin-top: 15px;
+      background-color: #238636;
+      color: white;
       border: none;
       border-radius: 5px;
-      color: white;
-      font-weight: bold;
       cursor: pointer;
     }
-    .message {
-      margin-top: 15px;
-      color: #4caf50;
+
+    button:hover {
+      background-color: #2ea043;
     }
-    footer {
-      margin-top: 50px;
-      color: #aaa;
-      font-size: 0.9em;
+
+    .footer {
+      margin-top: 20px;
+      font-size: 0.8rem;
+      color: #8b949e;
+      text-align: center;
     }
   </style>
 </head>
 <body>
-  <header>PROJECT Z-13</header>
-
-  <nav>
-    <a href="#">Головна</a>
-    <a href="#">Форум</a>
-    <a href="#">Вхід</a>
-    <a href="#">Реєстрація</a>
-  </nav>
+  <h1>Проєкт XEON</h1>
 
   <div class="form-box">
-    <h2>Реєстрація</h2>
-    <input type="email" id="email" placeholder="Email" />
-    <input type="password" id="password" placeholder="Пароль" />
-    <button onclick="signUp()">Зареєструватися</button>
-    <div class="message" id="signup-msg"></div>
+    <form id="register-form">
+      <h2>Реєстрація</h2>
+      <input type="email" id="register-email" placeholder="Email" required>
+      <input type="password" id="register-password" placeholder="Пароль" required>
+      <button type="submit">Зареєструватися</button>
+    </form>
   </div>
 
-  <div class="form-box">
-    <h2>Вхід</h2>
-    <input type="email" id="login-email" placeholder="Email" />
-    <input type="password" id="login-password" placeholder="Пароль" />
-    <button onclick="signIn()">Увійти</button>
-    <div class="message" id="login-msg"></div>
-  </div>
-
-  <footer>
+  <div class="footer">
     Розробник: Kradeel | Компанія: XEON | Email: XEONGRUP
-  </footer>
+  </div>
 
-  <script>
-    const supabase = supabase.createClient(
-      "https://nyqfvnbcwhprhvbvzfqt.supabase.co",
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im55cWZ2bmJjd2hwcmh2YnZ6ZnF0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTM3MTAwMTcsImV4cCI6MjA2OTI4NjAxN30.EPROXf4X-rkYYKZnNRSnxqYI3ec-rZU9mqTqwYy7rYA"
-    );
+  <script type="module">
+    import { createClient } from 'https://esm.sh/@supabase/supabase-js'
 
-    async function signUp() {
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
+    const supabaseUrl = 'https://nyqfvnbcwhprhvbvzfqt.supabase.co'
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im55cWZ2bmJjd2hwcmh2YnZ6ZnF0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTM3MTAwMTcsImV4cCI6MjA2OTI4NjAxN30.EPROXf4X-rkYYKZnNRSnxqYI3ec-rZU9mqTqwYy7rYA'
 
-      const { error } = await supabase.auth.signUp({ email, password });
+    const supabase = createClient(supabaseUrl, supabaseKey)
 
-      document.getElementById("signup-msg").innerText = error
-        ? "Помилка: " + error.message
-        : "Успішно зареєстровано!";
-    }
+    const registerForm = document.getElementById('register-form')
+    if (registerForm) {
+      registerForm.addEventListener('submit', async (e) => {
+        e.preventDefault()
+        const email = document.getElementById('register-email').value
+        const password = document.getElementById('register-password').value
 
-    async function signIn() {
-      const email = document.getElementById("login-email").value;
-      const password = document.getElementById("login-password").value;
+        const { error } = await supabase.auth.signUp({ email, password })
 
-      const { error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      });
-
-      document.getElementById("login-msg").innerText = error
-        ? "Помилка: " + error.message
-        : "Успішний вхід!";
+        if (error) {
+          alert('❌ Помилка реєстрації: ' + error.message)
+        } else {
+          alert('✅ Реєстрація успішна! Перевір email.')
+        }
+      })
     }
   </script>
-</body><script type="module">
-  import { createClient } from 'https://esm.sh/@supabase/supabase-js'
-
-  const supabaseUrl = 'https://nyqfvnbcwhprhvbvzfqt.supabase.co'
-  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im55cWZ2bmJjd2hwcmh2YnZ6ZnF0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTM3MTAwMTcsImV4cCI6MjA2OTI4NjAxN30.EPROXf4X-rkYYKZnNRSnxqYI3ec-rZU9mqTqwYy7rYA'
-
-  const supabase = createClient(supabaseUrl, supabaseKey)
-
-  const registerForm = document.getElementById('register-form')
-  if (registerForm) {
-    registerForm.addEventListener('submit', async (e) => {
-      e.preventDefault()
-      const email = document.getElementById('register-email').value
-      const password = document.getElementById('register-password').value
-
-      const { error } = await supabase.auth.signUp({ email, password })
-
-      if (error) {
-        alert('❌ Помилка реєстрації: ' + error.message)
-      } else {
-        alert('✅ Реєстрація успішна! Перевір email.')
-      }
-    })
-  }
-</script>
+</body>
 </html>
