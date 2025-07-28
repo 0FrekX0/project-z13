@@ -2,72 +2,50 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>PROJECT Z-13</title>
   <style>
     body {
       margin: 0;
       padding: 0;
-      overflow: hidden;
-      font-family: 'Orbitron', sans-serif;
-      background-color: #111;
-      color: white;
-    }
-
-    /* ⚡ Грозове небо з блискавкою */
-    .sky {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
-      background: linear-gradient(#111, #222);
-      z-index: -1;
-      animation: lightning 6s infinite;
-    }
-
-    @keyframes lightning {
-      0%, 100% { background-color: #111; }
-      45% { background-color: #222; }
-      48% { background-color: #eee; } /* блискавка */
-      50% { background-color: #111; }
-      90% { background-color: #222; }
-    }
-
-    /* Заголовок */
-    header {
-      position: absolute;
-      top: 15%;
-      width: 100%;
+      background-color: #0d0d0d;
+      font-family: Arial, sans-serif;
+      color: #fff;
       text-align: center;
+    }
+
+    header {
+      padding: 50px 20px 20px;
       font-size: 3em;
-      color: red;
-      text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
+      color: #ff3333;
+      text-shadow: 0 0 10px #ff0000;
     }
 
-    /* 👹 Кровосос */
     .mutant {
-      position: absolute;
-      bottom: 0;
-      left: 5%;
-      width: 180px;
-      height: 180px;
-      background-image: url('https://i.imgur.com/Du6tOjv.png'); /* нова стабільна картинка мутанта */
-      background-size: contain;
-      background-repeat: no-repeat;
-      animation: moveMutant 12s infinite alternate;
+      margin-top: 30px;
     }
 
-    @keyframes moveMutant {
-      0% { transform: translateX(0); opacity: 0.2; }
-      50% { transform: translateX(300px); opacity: 1; }
-      100% { transform: translateX(600px); opacity: 0.4; }
+    .mutant img {
+      width: 200px;
+      height: auto;
+    }
+
+    footer {
+      margin-top: 50px;
+      font-size: 0.9em;
+      color: #777;
     }
   </style>
 </head>
 <body>
-  <div class="sky"></div>
+
   <header>PROJECT Z-13</header>
-  <div class="mutant"></div>
+
+  <div class="mutant">
+    <img src="https://i.imgur.com/Du6tOjv.png" alt="Мутант Кровосос">
+  </div>
+
+  <footer>© 2025 PROJECT Z-13. Усі права захищено.</footer>
+
 </body>
 </html>
