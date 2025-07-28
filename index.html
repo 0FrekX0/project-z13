@@ -126,5 +126,29 @@
         : "Успішний вхід!";
     }
   </script>
-</body>
+</body><script type="module">
+  import { createClient } from 'https://esm.sh/@supabase/supabase-js'
+
+  const supabaseUrl = 'https://nyqfvnbcwhprhvbvzfqt.supabase.co'
+  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im55cWZ2bmJjd2hwcmh2YnZ6ZnF0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTM3MTAwMTcsImV4cCI6MjA2OTI4NjAxN30.EPROXf4X-rkYYKZnNRSnxqYI3ec-rZU9mqTqwYy7rYA'
+
+  const supabase = createClient(supabaseUrl, supabaseKey)
+
+  const registerForm = document.getElementById('register-form')
+  if (registerForm) {
+    registerForm.addEventListener('submit', async (e) => {
+      e.preventDefault()
+      const email = document.getElementById('register-email').value
+      const password = document.getElementById('register-password').value
+
+      const { error } = await supabase.auth.signUp({ email, password })
+
+      if (error) {
+        alert('❌ Помилка реєстрації: ' + error.message)
+      } else {
+        alert('✅ Реєстрація успішна! Перевір email.')
+      }
+    })
+  }
+</script>
 </html>
