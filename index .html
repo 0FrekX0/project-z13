@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PROJECT Z-13</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background: black;
+      color: white;
+      overflow-x: hidden;
+    }
+    header {
+      height: 100vh;
+      background: url('https://upload.wikimedia.org/wikipedia/commons/4/47/Example_z13_background.jpg') center/cover no-repeat;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+    h1 {
+      font-size: 4rem;
+      text-shadow: 0 0 10px #00ffcc;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { text-shadow: 0 0 10px #00ffcc; }
+      50% { text-shadow: 0 0 20px #00ffcc, 0 0 40px #00ffcc; }
+      100% { text-shadow: 0 0 10px #00ffcc; }
+    }
+    .btn {
+      padding: 15px 30px;
+      background: #00ffcc;
+      border: none;
+      color: #000;
+      font-size: 1.2rem;
+      cursor: pointer;
+      margin-top: 20px;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+    .btn:hover {
+      background: #00ddaa;
+    }
+    section {
+      padding: 60px 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    footer {
+      padding: 20px;
+      text-align: center;
+      background: #111;
+      color: #888;
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="hero-content">
+      <h1>PROJECT Z-13</h1>
+      <a href="#download"><button class="btn">Завантажити</button></a>
+    </div>
+  </header>
+
+  <section id="about">
+    <h2>Про гру</h2>
+    <p>PROJECT Z-13 — це кубічна виживальна гра в стилі STALKER, з грозовим небом, мутантами та атмосферою повної небезпеки. Тебе чекає Зона, якої ще не бачив ніхто...</p>
+  </section>
+
+  <section id="news">
+    <h2>Останні новини</h2>
+    <ul>
+      <li>🔥 27.07.2025 — Додано нового мутанта \"Кровосос\"</li>
+      <li>⚡ 20.07.2025 — Оптимізація лаунчера</li>
+    </ul>
+  </section>
+
+  <section id="download">
+    <h2>Завантаження</h2>
+    <p>Скоро з'явиться лаунчер. Слідкуй за оновленнями!</p>
+    <a href="https://твоя_реальна_ссилка.com"><button class="btn">Завантажити лаунчер</button></a>
+  </section>
+
+  <section id="contacts">
+    <h2>Контакти</h2>
+    <p>Розробник: <strong>Z13 Interactive</strong></p>
+    <p>Email: contact@z13interactive.com</p>
+  </section>
+
+  <footer>
+    &copy; 2025 PROJECT Z-13 | Z13 Interactive
+  </footer>
+</body>
+</html>
