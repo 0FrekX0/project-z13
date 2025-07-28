@@ -1,106 +1,130 @@
-<!DOCTYPE html><html lang="uk">
+<!DOCTYPE html>
+<html lang="uk">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>PROJECT Z-13</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PROJECT Z-13 | Реєстрація</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <style>
     body {
+      background-color: #0d0d0d;
+      color: white;
+      font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #0a0a0a;
-      font-family: Arial, sans-serif;
-      color: #fff;
       text-align: center;
-    }header {
-  padding: 40px 20px 10px;
-  font-size: 3em;
-  color: #ff3333;
-  text-shadow: 0 0 10px #ff0000;
-}
-
-nav {
-  background-color: #111;
-  padding: 10px;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  box-shadow: 0 0 10px #222;
-}
-
-nav a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-nav a:hover {
-  color: #ff3333;
-}
-
-.mutant {
-  margin-top: 30px;
-}
-
-.mutant img {
-  width: 200px;
-  height: auto;
-}
-
-.registration {
-  background-color: #1a1a1a;
-  padding: 20px;
-  margin: 30px auto;
-  max-width: 400px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px #333;
-}
-
-.registration input {
-  display: block;
-  width: 90%;
-  margin: 10px auto;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-}
-
-.registration button {
-  padding: 10px 20px;
-  background-color: #ff3333;
-  border: none;
-  border-radius: 5px;
-  color: #fff;
-  cursor: pointer;
-}
-
-footer {
-  margin-top: 40px;
-  font-size: 0.9em;
-  color: #777;
-}
-
+    }
+    header {
+      padding: 20px;
+      font-size: 2.5em;
+      background: #111;
+      color: #ff3333;
+      text-shadow: 0 0 10px #ff0000;
+    }
+    nav {
+      background: #222;
+      padding: 10px;
+    }
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+    }
+    .form-box {
+      margin: 30px auto;
+      max-width: 400px;
+      padding: 20px;
+      background: #1a1a1a;
+      border-radius: 10px;
+    }
+    input {
+      display: block;
+      width: 90%;
+      margin: 10px auto;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+    }
+    button {
+      padding: 10px 20px;
+      background: #ff3333;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .message {
+      margin-top: 15px;
+      color: #4caf50;
+    }
+    footer {
+      margin-top: 50px;
+      color: #aaa;
+      font-size: 0.9em;
+    }
   </style>
 </head>
-<body>  <header>PROJECT Z-13</header>  <nav>
+<body>
+  <header>PROJECT Z-13</header>
+
+  <nav>
     <a href="#">Головна</a>
-    <a href="#forum">Форум</a>
-    <a href="#login">Вхід</a>
-    <a href="#register">Реєстрація</a>
-  </nav>  <div class="mutant">
-    <img src="https://i.imgur.com/Du6tOjv.png" alt="Мутант Кровосос">
-  </div>  <div class="registration" id="register">
+    <a href="#">Форум</a>
+    <a href="#">Вхід</a>
+    <a href="#">Реєстрація</a>
+  </nav>
+
+  <div class="form-box">
     <h2>Реєстрація</h2>
-    <input type="text" placeholder="Ім'я користувача">
-    <input type="email" placeholder="Електронна пошта">
-    <input type="password" placeholder="Пароль">
-    <button>Зареєструватися</button>
-  </div>  <div class="registration" id="login">
+    <input type="email" id="email" placeholder="Email" />
+    <input type="password" id="password" placeholder="Пароль" />
+    <button onclick="signUp()">Зареєструватися</button>
+    <div class="message" id="signup-msg"></div>
+  </div>
+
+  <div class="form-box">
     <h2>Вхід</h2>
-    <input type="text" placeholder="Ім'я користувача або email">
-    <input type="password" placeholder="Пароль">
-    <button>Увійти</button>
-  </div>  <footer>
+    <input type="email" id="login-email" placeholder="Email" />
+    <input type="password" id="login-password" placeholder="Пароль" />
+    <button onclick="signIn()">Увійти</button>
+    <div class="message" id="login-msg"></div>
+  </div>
+
+  <footer>
     Розробник: Kradeel | Компанія: XEON | Email: XEONGRUP
-    <br>© 2025 PROJECT Z-13. Усі права захищено.
-  </footer></body>
+  </footer>
+
+  <script>
+    const supabase = supabase.createClient(
+      "https://nyqfvnbcwhprhvbvzfqt.supabase.co",
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im55cWZ2bmJjd2hwcmh2YnZ6ZnF0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTM3MTAwMTcsImV4cCI6MjA2OTI4NjAxN30.EPROXf4X-rkYYKZnNRSnxqYI3ec-rZU9mqTqwYy7rYA"
+    );
+
+    async function signUp() {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      const { error } = await supabase.auth.signUp({ email, password });
+
+      document.getElementById("signup-msg").innerText = error
+        ? "Помилка: " + error.message
+        : "Успішно зареєстровано!";
+    }
+
+    async function signIn() {
+      const email = document.getElementById("login-email").value;
+      const password = document.getElementById("login-password").value;
+
+      const { error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+
+      document.getElementById("login-msg").innerText = error
+        ? "Помилка: " + error.message
+        : "Успішний вхід!";
+    }
+  </script>
+</body>
 </html>
