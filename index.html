@@ -109,3 +109,75 @@
   </footer>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PROJECT Z-13</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(#0a0a0a, #1a1a1a);
+      color: white;
+      overflow: hidden;
+    }
+
+    /* ⚡ Анімація грозового неба */
+    .sky {
+      position: fixed;
+      width: 100%;
+      height: 100vh;
+      background: linear-gradient(#111, #333);
+      animation: lightning 6s infinite;
+    }
+
+    @keyframes lightning {
+      0%, 100% { background-color: #111; }
+      45% { background-color: #222; }
+      48% { background-color: #ccc; } /* блискавка */
+      50% { background-color: #111; }
+      90% { background-color: #222; }
+    }
+
+    /* 👹 Кровосос мутант */
+    .mutant {
+      position: absolute;
+      bottom: 0;
+      left: 10%;
+      width: 150px;
+      height: 150px;
+      background-image: url('https://i.imgur.com/d5Yz2Kp.png'); /* Кровосос */
+      background-size: cover;
+      animation: moveMutant 10s infinite alternate;
+    }
+
+    @keyframes moveMutant {
+      0% { transform: translateX(0); opacity: 0.3; }
+      50% { transform: translateX(200px); opacity: 1; }
+      100% { transform: translateX(400px); opacity: 0.5; }
+    }
+
+    header {
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      top: 10%;
+      font-size: 3em;
+      color: red;
+      text-shadow: 0 0 10px #ff0000;
+    }
+  </style>
+</head>
+<body>
+  <div class="sky"></div>
+  <header>PROJECT Z-13</header>
+  <div class="mutant"></div>
+</body>
+</html>
